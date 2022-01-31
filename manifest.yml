@@ -1,0 +1,10 @@
+modules:
+  jira:issueAdjustment:
+    - key: issue-adjustment-hello-world
+      title: Issue Adjustment Hello World
+      resource: main
+resources:
+  - key: main
+    path: static/hello-world/build
+app:
+  id:
