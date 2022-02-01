@@ -48,8 +48,10 @@ forge deploy --no-verify
 forge install
 ```
 
-- Modify your app by editing the `static/hello-world/index.jsx` file.
-
+- Modify your app by editing the `static/hello-world/index.jsx` file. After modifying file, remember to build your app in `static/hello-world` by `npm run build` or `npm run start` to build on change.
+```
+(cd static/hello-world && npm run start)
+```
 
 - Develop your app by running `forge tunnel` to proxy invocations locally:
 ```
