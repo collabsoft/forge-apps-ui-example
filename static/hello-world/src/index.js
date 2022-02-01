@@ -1,4 +1,5 @@
 import { issueAdjustments } from '@forge/jira-bridge';
+import { requestJira } from '@forge/bridge';
 
 const { onInit } = issueAdjustments;
 const log = console.log;
@@ -24,8 +25,10 @@ onInit(({ api }) => {
   assignee?.setDescription('Description added by issue adjustments');
 
   // Return a Promise to apply changes after resolve.
-  return new Promise(resolve => {
-    // Fetching sth here.
+  return new Promise(async (resolve) => {
+    // Example Product API call
+    const result = await requestJira('/rest/api/3/myself');
+    console.log('API call status:', result.status);
     resolve();
   });
 });
