@@ -1,5 +1,5 @@
 import { issueAdjustments } from '@forge/jira-bridge';
-import { requestJira } from '@forge/bridge';
+import { view, requestJira } from '@forge/bridge';
 
 const { onInit } = issueAdjustments;
 const log = console.log;
@@ -7,10 +7,14 @@ console.log = (...args) => {
   log('Issue Adjustment:', ...args);
 };
 
-onInit(({ api }) => {
+onInit(async ({ api }) => {
   const { getFieldById } = api;
 
   console.log('Hello World from Issue Adjustment');
+
+  // Context usage
+  const context = await view.getContext();
+  console.log('Project:', context.extension.project);
 
   // Hiding the priority field
   const priority = getFieldById('priority');

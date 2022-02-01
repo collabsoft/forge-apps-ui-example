@@ -1,11 +1,11 @@
 modules:
   jira:issueAdjustment:
-    - key: issue-adjustment-hello-world
-      title: Issue Adjustment Hello World
+    - key: issue-adjustments-hello-world
+      title: Issue Adjustments Hello World
       resource: main
   jira:adminPage:
-    - key: issue-adjustment-admin-page
-      title: Issue Adjustment Admin Page
+    - key: issue-adjustments-admin-page
+      title: Issue Adjustments Admin Page
       function: render-admin-page
   function:
     - key: render-admin-page
