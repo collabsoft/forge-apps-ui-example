@@ -27,11 +27,15 @@ See [Atlassian Developer Forge space](https://developer.atlassian.com/platform/f
 
 ## Quick start
 
+- Install dependencies by `npm install`
+```
+npm install
+```
+
 - Build your app in `static/hello-world` by `npm install && npm run build`
 ```
 (cd static/hello-world && npm install && npm run build)
 ```
-
 
 - Register your app by running:
 ```
