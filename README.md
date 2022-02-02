@@ -10,7 +10,7 @@ It's a Forge app that provides three issue adjustments operations:
 - Changing the summary field label to "Adjusted summary label"
 - Changing the assignee field description to "Description added by issue adjustments"
 
-Also, it provides a basic example of how to retrieve the app context.
+Also, it provides a basic example of how to retrieve the app context and how to call product API.
 
 ## About Forge
 
@@ -48,9 +48,9 @@ forge deploy --no-verify
 forge install
 ```
 
-- Modify your app by editing the `static/hello-world/index.jsx` file. After modifying file, remember to build your app in `static/hello-world` by `npm run build` or `npm run start` to build on change.
+- Modify your app by editing the `static/hello-world/index.jsx` file. After modifying file, remember to build your app in `static/hello-world` by `npm run build`.
 ```
-(cd static/hello-world && npm run start)
+(cd static/hello-world && npm run build)
 ```
 
 - Develop your app by running `forge tunnel` to proxy invocations locally:
