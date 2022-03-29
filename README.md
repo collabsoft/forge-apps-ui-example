@@ -32,9 +32,13 @@ See [Atlassian Developer Forge space](https://developer.atlassian.com/platform/f
 npm install
 ```
 
-- Build your app in `static/hello-world` by `npm install && npm run build`
+- Build your Issue Adjustments resource in `static/issue-adjustments` by `npm install && npm run build`
 ```
-(cd static/hello-world && npm install && npm run build)
+(cd static/issue-adjustments && npm install && npm run build)
+```
+- Build your Admin Page resource in `static/admin-page` by `npm install && npm run build`
+```
+(cd static/admin-page && npm install && npm run build)
 ```
 
 - Register your app by running:
@@ -52,9 +56,13 @@ forge deploy --no-verify
 forge install
 ```
 
-- Modify your app by editing the `static/hello-world/index.jsx` file. After modifying file, remember to build your app in `static/hello-world` by `npm run build`.
+- Modify your Issue Adjustments resource by editing files in `static/issue-adjustments`. After modifying file, remember to build your app in `static/issue-adjustments` by `npm run build`.
 ```
-(cd static/hello-world && npm run build)
+(cd static/isue-adjustments && npm run build)
+```
+- Modify your Admin Page resource by editing files in `static/admin-page`. After modifying file, remember to build your app in `static/admin-page` by `npm run build`.
+```
+(cd static/admin-page && npm run build)
 ```
 
 - Develop your app by running `forge tunnel` to proxy invocations locally:
@@ -70,7 +78,12 @@ forge tunnel
 
 ## Using the example
 
-This example app will affect issue create dialog for every project and issue type combination in the pre-alpha version of Issue Adjustments
+This example app will affect issue create dialog for configured project and issue types.
+
+### Project type support
+Currently, Issue Adjustments only supports company-managed software projects. Other project types, like Jira Service Management or team-managed projects, will not work with Issue Adjustments at this stage.
+
+You can read more about the difference [here](https://support.atlassian.com/jira-software-cloud/docs/what-are-team-managed-and-company-managed-projects/).
 
 ## License
 
