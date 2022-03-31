@@ -2,19 +2,25 @@ modules:
   jira:issueAdjustment:
     - key: issue-adjustments-hello-world
       title: Issue Adjustments Hello World
-      resource: main
+      resource: issueAdjustments
   jira:adminPage:
     - key: issue-adjustments-admin-page
       title: Issue Adjustments Admin Page
-      function: render-admin-page
+      layout: basic
+      resource: adminPage
+      resolver:
+        function: resolver
   function:
-    - key: render-admin-page
-      handler: settings.renderAdminPage
+    - key: resolver
+      handler: index.handler
 resources:
-  - key: main
-    path: static/hello-world/build
+  - key: issueAdjustments
+    path: static/issue-adjustments/dist
+  - key: adminPage
+    path: static/admin-page/dist
+permissions:
+  content:
+    styles:
+      - 'unsafe-inline'
 app:
   id:
-permissions:
-  scopes:
-    - 'read:jira-user'
