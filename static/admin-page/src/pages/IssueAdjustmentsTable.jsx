@@ -373,8 +373,8 @@ function IssueAdjustments() {
               onDismissed={() => setIssueAdjustmentsContextDeleteResult(null)}
               title={
                 <>
-                  DELETE /rest/api/3/issueAdjustments/
-                  {currentIssueAdjustment?.id}/contexts/{currentContext?.id}
+                  DELETE context from Issue Adjustment by calling PUT /rest/api/3/issueAdjustments/
+                    {currentIssueAdjustment?.id}
                 </>
               }
               actions={[
