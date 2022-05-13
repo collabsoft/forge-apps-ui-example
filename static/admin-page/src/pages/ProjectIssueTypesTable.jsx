@@ -3,7 +3,7 @@ import Tabs, { Tab, TabList, TabPanel } from "@atlaskit/tabs";
 import { invoke } from "@forge/bridge";
 import React, { useEffect, useState } from "react";
 
-function Projectissuetypes() {
+export function ProjectIssueTypesTable() {
   const [projectData, setProjectData] = useState(null);
   const [issueTypeData, setIssueTypeData] = useState(null);
 
@@ -123,4 +123,3 @@ function Projectissuetypes() {
   );
 }
 
-export default Projectissuetypes;

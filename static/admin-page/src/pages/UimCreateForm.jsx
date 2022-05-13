@@ -4,10 +4,10 @@ import Form, { Field, FormFooter } from "@atlaskit/form";
 import TextArea from "@atlaskit/textarea";
 import TextField from "@atlaskit/textfield";
 import React, { useState, useEffect } from "react";
-import { invokeIssueAdjustments } from "../invokeIssueAdjustments";
+import { invokeUiModifications } from "../invokeUiModifications";
 
-function createIssueAdjustments(data, setIssueAdjustmentResult) {
-  invokeIssueAdjustments("POST /rest/api/3/issueAdjustments", {
+function createUiModification(data, setUiModificationResult) {
+  invokeUiModifications("POST /rest/api/3/issueAdjustments", {
     body: {
       name: data["ia-name"],
       description: data["ia-description"],
@@ -17,18 +17,18 @@ function createIssueAdjustments(data, setIssueAdjustmentResult) {
     if ("data" in data && data.data !== "") {
       data.data = JSON.parse(data.data);
     }
-    setIssueAdjustmentResult(JSON.stringify(data.data, null, 2));
+    setUiModificationResult(JSON.stringify(data.data, null, 2));
   });
 }
 
-function IssueAdjustmentsForm() {
+export function UimCreateForm() {
   const [isSubmitDisabled, setSubmitDisabled] = useState(false);
-  const [issueAdjustmentResult, setIssueAdjustmentResult] = useState(null);
+  const [uiModificationResult, setUiModificationResult] = useState(null);
   const [name, setName] = useState("");
 
   useEffect(() => {
-    if (issueAdjustmentResult) setSubmitDisabled(false);
-  }, [issueAdjustmentResult])
+    if (uiModificationResult) setSubmitDisabled(false);
+  }, [uiModificationResult])
 
   return (
     <div
@@ -40,12 +40,12 @@ function IssueAdjustmentsForm() {
         flexDirection: "column",
       }}
     >
-      <h1>Create issue adjustment</h1>
+      <h1>Create UI modification</h1>
       <Form
         onSubmit={(data) => {
-          setIssueAdjustmentResult(null);
+          setUiModificationResult(null);
           setSubmitDisabled(true);
-          createIssueAdjustments(data, setIssueAdjustmentResult);
+          createUiModification(data, setUiModificationResult);
         }}
       >
         {({ formProps }) => (
@@ -53,7 +53,7 @@ function IssueAdjustmentsForm() {
             <Field
               key="ia-name"
               name="ia-name"
-              label="Name the issue adjustment"
+              label="Name the UI modification"
               isRequired
             >
               {({ fieldProps: { onChange, ...rest } }) => (
@@ -79,7 +79,7 @@ function IssueAdjustmentsForm() {
             <Field
               key="ia-data"
               name="ia-data"
-              label="Add some data to the issue adjustment"
+              label="Add some data to the UI modification"
             >
               {({ fieldProps }) => (
                 <TextArea
@@ -103,14 +103,13 @@ function IssueAdjustmentsForm() {
           </form>
         )}
       </Form>
-      {issueAdjustmentResult ? (
+      {uiModificationResult ? (
         <>
-          <h3>Issue adjustment created</h3>
-          <CodeBlock text={issueAdjustmentResult}></CodeBlock>
+          <h3>UI modification created</h3>
+          <CodeBlock text={uiModificationResult}></CodeBlock>
         </>
       ) : null}
     </div>
   );
 }
 
-export default IssueAdjustmentsForm;

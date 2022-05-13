@@ -1,11 +1,11 @@
 modules:
-  jira:issueAdjustment:
-    - key: issue-adjustments-hello-world
-      title: Issue Adjustments Hello World
-      resource: issueAdjustments
+  jira:uiModifications:
+    - key: ui-modifications-app
+      title: Example UI modifications app
+      resource: uiModificationsApp
   jira:adminPage:
-    - key: issue-adjustments-admin-page
-      title: Issue Adjustments Admin Page
+    - key: ui-modifications-admin-page
+      title: Example UI modifications admin page
       layout: basic
       resource: adminPage
       resolver:
@@ -14,8 +14,8 @@ modules:
     - key: resolver
       handler: index.handler
 resources:
-  - key: issueAdjustments
-    path: static/issue-adjustments/dist
+  - key: uiModificationsApp
+    path: static/ui-modifications/dist
   - key: adminPage
     path: static/admin-page/dist
 permissions:
@@ -35,4 +35,3 @@ permissions:
     styles:
       - 'unsafe-inline'
 app:
-  id:

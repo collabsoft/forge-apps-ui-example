@@ -6,27 +6,27 @@ import Modal, {
   ModalTitle,
   ModalTransition,
 } from "@atlaskit/modal-dialog";
-import { invokeIssueAdjustments } from "../invokeIssueAdjustments";
+import { invokeUiModifications } from "../invokeUiModifications";
 
 import Button from "@atlaskit/button/standard-button";
 
-const deleteIssueAdjustments = function (
-  issueAdjustmentId,
-  setIssueAdjustmentsDeleteResult
+const deleteUiModification = function (
+  uiModificationId,
+  setDeleteResult
 ) {
-  return invokeIssueAdjustments(
-    "DELETE /rest/api/3/issueAdjustments/{issueAdjustmentId}",
+  return invokeUiModifications(
+    "DELETE /rest/api/3/issueAdjustments/{uiModificationId}",
     {
-      id: issueAdjustmentId,
+      id: uiModificationId,
     }
   ).then(data => {
-    setIssueAdjustmentsDeleteResult(JSON.stringify(data, null, 2));
+    setDeleteResult(JSON.stringify(data, null, 2));
   });
 };
 
-export default function useIssueAdjustmentsDeleteConfirmation(
-  currentIssueAdjustment,
-  setIssueAdjustmentsDeleteResult,
+export default function useDeleteUimConfirmation(
+  currentUiModification,
+  setDeleteUimResult,
   setUpdateTable
 ) {
   const [isSubmitDisabled, setSubmitDisabled] = useState(false);
@@ -57,13 +57,13 @@ export default function useIssueAdjustmentsDeleteConfirmation(
         >
           <ModalHeader>
             <ModalTitle appearance="danger">
-              Delete issue adjustment?
+              Delete UI modification?
             </ModalTitle>
           </ModalHeader>
           <ModalBody>
             <p>
-              Issue adjustment {currentIssueAdjustment?.name} (
-              {currentIssueAdjustment?.id})
+              UI modification {currentUiModification?.name} (
+              {currentUiModification?.id})
             </p>
           </ModalBody>
           <ModalFooter>
@@ -81,9 +81,9 @@ export default function useIssueAdjustmentsDeleteConfirmation(
               isDisabled={isSubmitDisabled}
               onClick={() => {
                 setSubmitDisabled(true);
-                deleteIssueAdjustments(
-                  currentIssueAdjustment.id,
-                  setIssueAdjustmentsDeleteResult
+                deleteUiModification(
+                  currentUiModification.id,
+                  setDeleteUimResult
                 ).then(() => {
                   setSubmitDisabled(false);
                   closeDeleteConfirmation();

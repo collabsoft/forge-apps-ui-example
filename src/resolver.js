@@ -1,7 +1,7 @@
 import api, { APIResponse, route } from "@forge/api";
 import {
-  IssueAdjustmentsEndpoints,
-  IssueAdjustmentsMethod,
+  UiModificationsEndpoints,
+  UiModificationsMethod,
 } from "./constants";
 
 export const logJson = (content, context = "") => {
@@ -13,7 +13,7 @@ const jsonHeaders = {
   Accept: "application/json",
 };
 
-export async function issueAdjustmentResolver(
+export async function uimResolver(
   endpoint,
   payload
 ) {
@@ -35,22 +35,22 @@ export async function issueAdjustmentResolver(
 
   let requestURL;
 
-  let url = IssueAdjustmentsEndpoints[endpoint];
+  let url = UiModificationsEndpoints[endpoint];
 
   if ("contextId" in payload) {
     url = url.replace("{contextId}", payload.contextId);
   }
   if ("id" in payload) {
-    url = url.replace("{issueAdjustmentId}", payload.id);
+    url = url.replace("{uiModificationId}", payload.id);
   }
 
   requestURL = route`${url}?${params}`;
 
   console.log("Request URL", requestURL);
-  console.log("Method", IssueAdjustmentsMethod[endpoint]);
+  console.log("Method", UiModificationsMethod[endpoint]);
 
   const request = {
-    method: IssueAdjustmentsMethod[endpoint],
+    method: UiModificationsMethod[endpoint],
     headers: {
       ...jsonHeaders,
     },
@@ -73,11 +73,10 @@ export async function issueAdjustmentResolver(
   return { status, data };
 }
 
-export function defineIssueAdjustments(resolver) {
-  Object.keys(IssueAdjustmentsEndpoints).map((endpoint) => {
-    resolver.define(endpoint, async ({ payload: resolverPayload }) => {
-      const payload = resolverPayload;
-      return await issueAdjustmentResolver(endpoint, payload);
+export function define(resolver) {
+  Object.keys(UiModificationsEndpoints).map((endpoint) => {
+    resolver.define(endpoint, async ({ payload }) => {
+      return await uimResolver(endpoint, payload);
     });
   });
 }

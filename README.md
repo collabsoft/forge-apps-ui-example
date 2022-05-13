@@ -1,14 +1,14 @@
 [![Atlassian license](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
-## Issue Adjustments Forge Example
+## UI modifications forge example
 
-This repository is for the early access preview for the upcoming [Issue Adjustments extension point](https://trello.com/c/HohZrqJl/77-issue-adjustments).
+This repository is for the early access preview for the upcoming [UI modifications extension point](https://trello.com/c/HohZrqJl/77-issue-adjustments).
 
-This app serves as an end-to-end example of how to use issue adjustments in Jira Cloud.
-It's a Forge app that provides three issue adjustments operations:
+This app serves as an end-to-end example of how to use UI modifications in Jira Cloud.
+It's a Forge app that provides three UI modifications operations:
 
 - Hiding the priority field
-- Changing the summary field label to "Adjusted summary label"
-- Changing the assignee field description to "Description added by issue adjustments"
+- Changing the summary field label to "Modified summary label"
+- Changing the assignee field description to "Description added by UI modifications"
 
 Also, it provides a basic example of how to retrieve the app context and how to call product API.
 
@@ -22,23 +22,32 @@ See [Atlassian Developer Forge space](https://developer.atlassian.com/platform/f
 
 - Jira instance prerequisites:
   - The [issue create view experience](https://support.atlassian.com/jira-work-management/docs/what-is-the-new-jira-issue-create-experience/) enabled.
-  - Issue adjustments integration code enabled. This feature can only be enabled by Atlassian.
+  - UI modifications integration code enabled. This feature can only be enabled by Atlassian.
 
 
 ## Quick start
 
-- Install dependencies by `npm install`
+- Install dependencies by `yarn install`
 ```
-npm install
+yarn install
 ```
 
-- Build your Issue Adjustments resource in `static/issue-adjustments` by `npm install && npm run build`
+- Build your UI modifications resource in `static/ui-modifications` by `yarn build:uim`
 ```
-(cd static/issue-adjustments && npm install && npm run build)
+yarn build:uim
 ```
-- Build your Admin Page resource in `static/admin-page` by `npm install && npm run build`
+or with watching changes
 ```
-(cd static/admin-page && npm install && npm run build)
+yarn watch:uim
+```
+
+- Build your Admin Page resource in `static/admin-page` by `yarn build:admin`
+```
+yarn build:admin
+```
+or with watching changes
+```
+yarn watch:admin
 ```
 
 - Register your app by running:
@@ -56,14 +65,19 @@ forge deploy --no-verify
 forge install
 ```
 
-- Modify your Issue Adjustments resource by editing files in `static/issue-adjustments`. After modifying file, remember to build your app in `static/issue-adjustments` by `npm run build`.
+- Modify your UI modifications resource by editing files in `static/ui-modifications`. After modifying file, remember to build your app by `yarn build:uim`.
 ```
-(cd static/isue-adjustments && npm run build)
+yarn build:uim
 ```
-- Modify your Admin Page resource by editing files in `static/admin-page`. After modifying file, remember to build your app in `static/admin-page` by `npm run build`.
+- Modify your Admin Page resource by editing files in `static/admin-page`. After modifying file, remember to build your app by `yarn build:admin`.
 ```
-(cd static/admin-page && npm run build)
+yarn build:admin
 ```
+or build both by 
+```
+yarn build
+```
+
 
 - Develop your app by running `forge tunnel` to proxy invocations locally:
 ```
@@ -81,7 +95,7 @@ forge tunnel
 This example app will affect issue create dialog for configured project and issue types.
 
 ### Project type support
-Currently, Issue Adjustments only supports company-managed software projects. Other project types, like Jira Service Management or team-managed projects, will not work with Issue Adjustments at this stage.
+Currently, UI modifications only supports company-managed software projects. Other project types, like Jira Service Management or team-managed projects, will not work with UI modifications at this stage.
 
 You can read more about the difference [here](https://support.atlassian.com/jira-software-cloud/docs/what-are-team-managed-and-company-managed-projects/).
 

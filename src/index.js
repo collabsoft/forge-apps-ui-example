@@ -1,6 +1,6 @@
 import api, { route } from "@forge/api";
 import Resolver from "@forge/resolver";
-import { logJson, defineIssueAdjustments } from "./issueAdjustmentsResolver";
+import { logJson, define } from "./resolver";
 
 const jsonHeaders = {
   "Content-Type": "application/json",
@@ -9,7 +9,7 @@ const jsonHeaders = {
 
 let resolver = new Resolver();
 
-defineIssueAdjustments(resolver);
+define(resolver);
 
 resolver.define("GET projects", async ({ payload }) => {
   const params = new URLSearchParams(payload.params || {});

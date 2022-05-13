@@ -6,22 +6,22 @@ import Modal, {
   ModalTitle,
   ModalTransition,
 } from "@atlaskit/modal-dialog";
-import { invokeIssueAdjustments } from "../invokeIssueAdjustments";
+import { invokeUiModifications } from "../invokeUiModifications";
 
 import Button from "@atlaskit/button/standard-button";
 
-const deleteIssueAdjustmentsContext = function (
-  issueAdjustment,
+const deleteContext = function (
+  uiModification,
   contextId,
-  setIssueAdjustmentsContextDeleteResult
+  setContextDeleteResult
 ) {
-  return invokeIssueAdjustments(
-    "PUT /rest/api/3/issueAdjustments/{issueAdjustmentId}",
+  return invokeUiModifications(
+    "PUT /rest/api/3/issueAdjustments/{uiModificationId}",
     {
-      id: issueAdjustment.id,
+      id: uiModification.id,
       body: {
         contexts: [
-          ...issueAdjustment.contexts
+          ...uiModification.contexts
             .filter((context) => context.id !== contextId)
             .map((context) => ({
               projectId: context.projectId,
@@ -34,15 +34,16 @@ const deleteIssueAdjustmentsContext = function (
   ).then(data => {
     if ("data" in data && data.data !== "") {
       data.data = JSON.parse(data.data);
-    };
-    setIssueAdjustmentsContextDeleteResult(JSON.stringify(data, null, 2));
+    }
+
+    setContextDeleteResult(JSON.stringify(data, null, 2));
   });
 };
 
-export default function useIssueAdjustmentsContextDeleteConfirmation(
-  currentIssueAdjustment,
+export function useContextDeleteConfirmation(
+  currentUiModification,
   currentContext,
-  setIssueAdjustmentsContextDeleteResult,
+  setContextDeleteResult,
   setUpdateTable
 ) {
   const [isSubmitDisabled, setSubmitDisabled] = useState(false);
@@ -77,8 +78,8 @@ export default function useIssueAdjustmentsContextDeleteConfirmation(
           </ModalHeader>
           <ModalBody>
             <p>
-              For issue adjustment {currentIssueAdjustment?.name} (
-              {currentIssueAdjustment?.id}) and context id
+              For UI modifications {currentUiModification?.name} (
+              {currentUiModification?.id}) and context id
               {currentContext?.id}
             </p>
           </ModalBody>
@@ -97,10 +98,10 @@ export default function useIssueAdjustmentsContextDeleteConfirmation(
               isDisabled={isSubmitDisabled}
               onClick={() => {
                 setSubmitDisabled(true);
-                deleteIssueAdjustmentsContext(
-                  currentIssueAdjustment,
+                deleteContext(
+                  currentUiModification,
                   currentContext.id,
-                  setIssueAdjustmentsContextDeleteResult
+                  setContextDeleteResult
                 ).then(() => {
                   setSubmitDisabled(false);
                   closeContextDeleteConfirmation();

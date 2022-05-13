@@ -1,25 +1,16 @@
 import Button from "@atlaskit/button/standard-button";
 import { CodeBlock } from "@atlaskit/code";
-import DropdownMenu, {
-  DropdownItem,
-  DropdownItemGroup,
-} from "@atlaskit/dropdown-menu";
+import DropdownMenu, { DropdownItem, DropdownItemGroup, } from "@atlaskit/dropdown-menu";
 import Flag, { FlagGroup } from "@atlaskit/flag";
 import MoreIcon from "@atlaskit/icon/glyph/more";
 import { invoke } from "@forge/bridge";
 
-import TableTree, {
-  Cell,
-  Header,
-  Headers,
-  Row,
-  Rows,
-} from "@atlaskit/table-tree";
+import TableTree, { Cell, Header, Headers, Row, Rows, } from "@atlaskit/table-tree";
 import React, { useEffect, useState } from "react";
-import { invokeIssueAdjustments } from "../invokeIssueAdjustments";
-import useIssueAdjustmentsContextCreateModal from "../modals/useIssueAdjustmentsContextCreateModal";
-import useIssueAdjustmentsContextDeleteConfirmation from "../modals/useIssueAdjustmentsContextDeleteConfirmation";
-import useIssueAdjustmentsDeleteConfirmation from "../modals/useIssueAdjustmentsDeleteConfirmation";
+import { invokeUiModifications } from "../invokeUiModifications";
+import { useContextDeleteConfirmation } from "../modals/useContextDeleteConfirmation";
+import useDeleteUimConfirmation from "../modals/useDeleteUimConfirmation";
+import { useContextCreateModal } from "../modals/useContextCreateModal";
 
 function getProjectDetails(projectData, id) {
   const project = projectData?.data?.values.find(
@@ -60,13 +51,13 @@ function getIssueTypeDetails(issueTypeData, id) {
   );
 }
 
-function IssueAdjustmentContext({
+function UiModificationContext({
   setCurrentContext,
-  setCurrentIssueAdjustment,
+  setCurrentUiModification,
   projectData,
   issueTypeData,
   openContextDeleteConfirmation,
-  issueAdjustment,
+  uiModification,
   ...rest
 }) {
   return (
@@ -78,7 +69,7 @@ function IssueAdjustmentContext({
     >
       <div>
         <h4>
-          Issue adjustment {issueAdjustment.name} ({issueAdjustment.id})
+          UI modification {uiModification.name} ({uiModification.id})
         </h4>
         <h6>Data:</h6>
         <div
@@ -87,7 +78,7 @@ function IssueAdjustmentContext({
             borderRadius: "3px",
           }}
         >
-          <CodeBlock text={issueAdjustment.data} />
+          <CodeBlock text={uiModification.data} />
         </div>
       </div>
       <TableTree {...rest}>
@@ -100,7 +91,7 @@ function IssueAdjustmentContext({
           <Header width="120px">Actions</Header>
         </Headers>
         <Rows
-          items={issueAdjustment.contexts}
+          items={uiModification.contexts}
           render={context => (
             <Row itemId={context.id}>
               <Cell singleLine>{context.id}</Cell>
@@ -133,10 +124,10 @@ function IssueAdjustmentContext({
                         setCurrentContext({
                           id: context.id,
                         });
-                        setCurrentIssueAdjustment({
-                          id: issueAdjustment.id,
-                          name: issueAdjustment.name,
-                          contexts: issueAdjustment.contexts,
+                        setCurrentUiModification({
+                          id: uiModification.id,
+                          name: uiModification.name,
+                          contexts: uiModification.contexts,
                         });
                         openContextDeleteConfirmation();
                       }}
@@ -154,51 +145,51 @@ function IssueAdjustmentContext({
   );
 }
 
-function IssueAdjustments() {
+export function UimTable() {
   const [
-    issueAdjustmentsContextCreateResult,
-    setIssueAdjustmentsContextResult,
+    uimContextCreateResult,
+    setUimContextResult,
   ] = useState(null);
-  const [issueAdjustments, setIssueAdjustments] = useState(null);
+  const [uiModification, setUiModification] = useState(null);
   const [updateTable, setUpdateTable] = useState(0);
 
-  const [currentIssueAdjustment, setCurrentIssueAdjustment] = useState(null);
+  const [currentUiModification, setCurrentUiModification] = useState(null);
   const [currentContext, setCurrentContext] = useState(null);
 
-  const [IssueAdjustmentsContextCreateModal, openCreateContextModal] =
-    useIssueAdjustmentsContextCreateModal(
-      currentIssueAdjustment,
+  const [UimContextCreateModal, openCreateContextModal] =
+    useContextCreateModal(
+      currentUiModification,
       setUpdateTable,
-      setIssueAdjustmentsContextResult
+      setUimContextResult
     );
 
   const [
-    issueAdjustmentsContextDeleteResult,
-    setIssueAdjustmentsContextDeleteResult,
+    uimContextDeleteResult,
+    setUimContextDeleteResult,
   ] = useState(null);
 
   const [
-    IssueAdjustmentsContextDeleteConfirmation,
+    UimContextDeleteConfirmation,
     openContextDeleteConfirmation,
-  ] = useIssueAdjustmentsContextDeleteConfirmation(
-    currentIssueAdjustment,
+  ] = useContextDeleteConfirmation(
+    currentUiModification,
     currentContext,
-    setIssueAdjustmentsContextDeleteResult,
+    setUimContextDeleteResult,
     setUpdateTable
   );
 
-  const [issueAdjustmentsDeleteResult, setIssueAdjustmentsDeleteResult] =
+  const [UimDeleteResult, setUimDeleteResult] =
     useState(null);
 
-  const [IssueAdjustmentsDeleteConfirmation, openDeleteConfirmation] =
-    useIssueAdjustmentsDeleteConfirmation(
-      currentIssueAdjustment,
-      setIssueAdjustmentsDeleteResult,
+  const [UimDeleteConfirmation, openDeleteConfirmation] =
+    useDeleteUimConfirmation(
+      currentUiModification,
+      setUimDeleteResult,
       setUpdateTable
     );
 
   useEffect(() => {
-    invokeIssueAdjustments("GET /rest/api/3/issueAdjustments", {
+    invokeUiModifications("GET /rest/api/3/issueAdjustments", {
       expands: {
         contexts: true,
         data: true,
@@ -207,23 +198,8 @@ function IssueAdjustments() {
       if ("data" in data) {
         data.data = JSON.parse(data.data);
       }
-      if (data.data.values) {
-        data.data.values = data.data.values.map((issueAdjustment) => {
-          if (issueAdjustment.contexts) {
-            issueAdjustment.contexts = issueAdjustment.contexts.map(
-              (context) => {
-                context.issueAdjustmentId = issueAdjustment.id;
-                context.issueAdjustmentName = issueAdjustment.name;
-                context.issueAdjustmentContexts = issueAdjustment.contexts;
-                return context;
-              }
-            );
-          }
-          return issueAdjustment;
-        });
-      }
 
-      setIssueAdjustments(data);
+      setUiModification(data);
     });
   }, [updateTable]);
 
@@ -248,10 +224,10 @@ function IssueAdjustments() {
     });
   }, []);
 
-  let IssueAdjustments;
+  let UiModifications;
 
-  if (issueAdjustments) {
-    IssueAdjustments = (
+  if (uiModification) {
+    UiModifications = (
       <TableTree>
         <Headers>
           <Header width="345px">Id</Header>
@@ -260,30 +236,30 @@ function IssueAdjustments() {
           <Header width="120px">Actions</Header>
         </Headers>
         <Rows
-          items={issueAdjustments.data.values}
-          render={issueAdjustment => {
-            if (issueAdjustment.childrenRows) {
+          items={uiModification.data.values}
+          render={uiModification => {
+            if (uiModification.childrenRows) {
               // We are opening the expand
               return (
-                <IssueAdjustmentContext
-                  issueAdjustment={issueAdjustment.childrenRows}
+                <UiModificationContext
+                  uiModification={uiModification.childrenRows}
                   projectData={projectData}
                   issueTypeData={issueTypeData}
                   openContextDeleteConfirmation={openContextDeleteConfirmation}
-                  setCurrentIssueAdjustment={setCurrentIssueAdjustment}
+                  setCurrentUiModification={setCurrentUiModification}
                   setCurrentContext={setCurrentContext}
                 />
               );
             }
             return (
               <Row
-                itemId={issueAdjustment.id}
+                itemId={uiModification.id}
                 hasChildren={true}
-                items={[{ childrenRows: issueAdjustment }]}
+                items={[{ childrenRows: uiModification }]}
               >
-                <Cell singleLine>{issueAdjustment.id}</Cell>
-                <Cell singleLine>{issueAdjustment.name}</Cell>
-                <Cell singleLine>{issueAdjustment.description}</Cell>
+                <Cell singleLine>{uiModification.id}</Cell>
+                <Cell singleLine>{uiModification.name}</Cell>
+                <Cell singleLine>{uiModification.description}</Cell>
                 <Cell singleLine>
                   <DropdownMenu
                     trigger={({ triggerRef, ...props }) => (
@@ -298,10 +274,10 @@ function IssueAdjustments() {
                     <DropdownItemGroup>
                       <DropdownItem
                         onClick={() => {
-                          setCurrentIssueAdjustment({
-                            id: issueAdjustment.id,
-                            name: issueAdjustment.name,
-                            contexts: issueAdjustment.contexts,
+                          setCurrentUiModification({
+                            id: uiModification.id,
+                            name: uiModification.name,
+                            contexts: uiModification.contexts,
                           });
                           openCreateContextModal();
                         }}
@@ -310,10 +286,10 @@ function IssueAdjustments() {
                       </DropdownItem>
                       <DropdownItem
                         onClick={() => {
-                          setCurrentIssueAdjustment({
-                            id: issueAdjustment.id,
-                            name: issueAdjustment.name,
-                            contexts: issueAdjustment.contexts,
+                          setCurrentUiModification({
+                            id: uiModification.id,
+                            name: uiModification.name,
+                            contexts: uiModification.contexts,
                           });
                           openDeleteConfirmation();
                         }}
@@ -330,89 +306,89 @@ function IssueAdjustments() {
       </TableTree>
     );
   } else {
-    IssueAdjustments = "Loading...";
+    UiModifications = "Loading...";
   }
 
   return (
     <>
       <div>
         <h3>GET /rest/api/3/issueAdjustments?expand=contexts,data</h3>
-        {IssueAdjustmentsContextCreateModal}
-        {IssueAdjustmentsContextDeleteConfirmation}
-        {IssueAdjustmentsDeleteConfirmation}
-        {issueAdjustmentsContextCreateResult !== null ? (
+        {UimContextCreateModal}
+        {UimContextDeleteConfirmation}
+        {UimDeleteConfirmation}
+        {uimContextCreateResult !== null ? (
           <FlagGroup>
             <Flag
               icon={null}
-              description={issueAdjustmentsContextCreateResult}
+              description={uimContextCreateResult}
               id="1"
               key="1"
-              onDismissed={() => setIssueAdjustmentsContextResult(null)}
+              onDismissed={() => setUimContextResult(null)}
               title={
                 <>
                   POST /rest/api/3/issueAdjustments/
-                  {currentIssueAdjustment?.id}/contexts
+                  {currentUiModification?.id}/contexts
                 </>
               }
               actions={[
                 {
                   content: "Ok",
-                  onClick: () => setIssueAdjustmentsContextResult(null),
+                  onClick: () => setUimContextResult(null),
                 },
               ]}
             />
           </FlagGroup>
         ) : null}
-        {issueAdjustmentsContextDeleteResult !== null ? (
+        {uimContextDeleteResult !== null ? (
           <FlagGroup>
             <Flag
               icon={null}
-              description={issueAdjustmentsContextDeleteResult}
+              description={uimContextDeleteResult}
               id="2"
               key="2"
-              onDismissed={() => setIssueAdjustmentsContextDeleteResult(null)}
+              onDismissed={() => setUimContextDeleteResult(null)}
               title={
                 <>
-                  Delete context from Issue Adjustment by calling PUT /rest/api/3/issueAdjustments/
-                    {currentIssueAdjustment?.id}
+                  Delete context from UI modification by calling PUT /rest/api/3/issueAdjustments/
+                    {currentUiModification?.id}
                 </>
               }
               actions={[
                 {
                   content: "Ok",
-                  onClick: () => setIssueAdjustmentsContextDeleteResult(null),
+                  onClick: () => setUimContextDeleteResult(null),
                 },
               ]}
             />
           </FlagGroup>
         ) : null}
-        {issueAdjustmentsDeleteResult !== null ? (
+        {UimDeleteResult !== null ? (
           <FlagGroup>
             <Flag
               icon={null}
-              description={issueAdjustmentsDeleteResult}
+              description={UimDeleteResult}
               id="3"
               key="3"
-              onDismissed={() => setIssueAdjustmentsDeleteResult(null)}
+              onDismissed={() => setUimDeleteResult(null)}
               title={
                 <>
                   DELETE /rest/api/3/issueAdjustments/
-                  {currentIssueAdjustment?.id}
+                  {currentUiModification?.id}
                 </>
               }
               actions={[
                 {
                   content: "Ok",
-                  onClick: () => setIssueAdjustmentsDeleteResult(null),
+                  onClick: () => setUimDeleteResult(null),
                 },
               ]}
             />
           </FlagGroup>
         ) : null}
-        {IssueAdjustments}
+
+        {UiModifications}
       </div>
     </>
   );
 }
 
-export default IssueAdjustments;

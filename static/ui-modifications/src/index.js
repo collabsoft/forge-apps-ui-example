@@ -4,7 +4,7 @@ import { getFieldsSnapshot } from "./getFieldsSnapshot";
 
 const log = console.log;
 console.log = (...args) => {
-  log('Issue Adjustments,', ...args);
+  log('UI modifications app,', ...args);
 };
 
 // Context usage
@@ -12,11 +12,14 @@ view.getContext().then((context) => {
   const  { extension } = context;
   console.log('Context:');
   console.table({project: extension.project, issueType: extension.issueType})
+
+  console.log('UI modifications data:');
+  console.table(extension.uiModifications);
 })
 
 const { onInit } = issueAdjustments;
 
-const issueAdjustmentsOnInit = ({ api }) => {
+const onInitCallback = ({ api }) => {
   const { getFieldById } = api;
 
   // Hiding the priority field
@@ -25,11 +28,11 @@ const issueAdjustmentsOnInit = ({ api }) => {
 
   // Changing the summary field label
   const summary = getFieldById('summary');
-  summary?.setName('Adjusted summary label');
+  summary?.setName('Modified summary label');
 
-  // Changing the assignee field description 
+  // Changing the assignee field description
   const assignee = getFieldById('assignee');
-  assignee?.setDescription('Description added by issue adjustments');
+  assignee?.setDescription('Description added by UI modifications');
 
   // Hiding the description field
   const description = getFieldById('description');
@@ -47,4 +50,4 @@ const issueAdjustmentsOnInit = ({ api }) => {
     });
 };
 
-onInit(issueAdjustmentsOnInit);
+onInit(onInitCallback);

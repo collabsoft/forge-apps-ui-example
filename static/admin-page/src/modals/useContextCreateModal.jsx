@@ -5,25 +5,25 @@ import Modal, {
   ModalTitle,
   ModalTransition,
 } from "@atlaskit/modal-dialog";
-import { invokeIssueAdjustments } from "../invokeIssueAdjustments";
+import { invokeUiModifications } from "../invokeUiModifications";
 import Form, { FormFooter } from "@atlaskit/form";
 
 import Button from "@atlaskit/button/standard-button";
 
 import ProjectissuetypeSelectors from "../components/ProjectissuetypeSelector";
 
-const createIssueAdjustmentsContext = function (
-  issueAdjustment,
+export const createUimContext = (
+  uiModification,
   data,
-  setIssueAdjustmentsContextResult
-) {
-  return invokeIssueAdjustments(
-    "PUT /rest/api/3/issueAdjustments/{issueAdjustmentId}",
+  setContextResult
+) => {
+  return invokeUiModifications(
+    "PUT /rest/api/3/issueAdjustments/{uiModificationId}",
     {
-      id: issueAdjustment.id,
+      id: uiModification.id,
       body: {
         contexts: [
-          ...issueAdjustment.contexts.map((context) => ({
+          ...uiModification.contexts.map((context) => ({
             projectId: context.projectId,
             issueTypeId: context.issueTypeId,
             viewType: "GIC",
@@ -39,15 +39,16 @@ const createIssueAdjustmentsContext = function (
   ).then(data => {
     if ("data" in data && data.data !== "") {
       data.data = JSON.parse(data.data);
-    };
-    setIssueAdjustmentsContextResult(JSON.stringify(data, null, 2));
+    }
+
+    setContextResult(JSON.stringify(data, null, 2));
   });
 };
 
-export default function useIssueAdjustmentsContextCreateModal(
-  currentIssueAdjustment,
+export function useContextCreateModal(
+  currentUiModification,
   setUpdateTable,
-  setIssueAdjustmentsContextResult
+  setContextResult
 ) {
   const [isSubmitDisabled, setSubmitDisabled] = useState(false);
 
@@ -80,18 +81,18 @@ export default function useIssueAdjustmentsContextCreateModal(
             <ModalTitle>Select project and issue type</ModalTitle>
 
             <p>
-              For issue adjustment {currentIssueAdjustment?.name} (
-              {currentIssueAdjustment?.id})
+              For UI modification {currentUiModification?.name} (
+              {currentUiModification?.id})
             </p>
           </ModalHeader>
           <ModalBody>
             <Form
               onSubmit={(data) => {
                 setSubmitDisabled(true);
-                createIssueAdjustmentsContext(
-                  currentIssueAdjustment,
+                createUimContext(
+                  currentUiModification,
                   data,
-                  setIssueAdjustmentsContextResult
+                  setContextResult
                 ).then(() => {
                   setSubmitDisabled(false);
                   closeCreateContextModal();

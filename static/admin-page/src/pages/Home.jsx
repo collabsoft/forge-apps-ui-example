@@ -3,21 +3,21 @@ import React from "react";
 function Home() {
   return (
     <>
-      <h3>Issue Adjustments admin page</h3>
+      <h3>UI modifications - admin page</h3>
       <p>
-        Use this page to administer in which contexts the issue adjustments in
+        Use this page to administer in which contexts the UI modifications in
         this app will run.
       </p>
       <p>
-        You <strong>cannot</strong> administer all the issue adjustments from
-        all the issue adjustments apps from this panel.
+        You <strong>cannot</strong> administer all the UI modifications from
+        all the UI modifications apps from this panel.
       </p>
-      <h4>New issue adjustment</h4>
+      <h4>NewUI modification</h4>
       <p>
-        Create new issue adjustments. This is how we include different data into
-        the issue adjustments
+        Create new UI modification. This is how we include different data into
+        the UI modifications
       </p>
-      <h4>Issue adjustment contexts and data</h4>
+      <h4>UI modifications contexts and data</h4>
       <p>
         A complete list of the contexts for <strong>this app</strong>.
       </p>
