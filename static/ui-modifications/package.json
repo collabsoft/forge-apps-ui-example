@@ -1,34 +1,34 @@
 {
-  "name": "ui-modifications-app",
-  "version": "0.1.0",
-  "private": true,
-  "homepage": ".",
-  "dependencies": {
-    "@forge/bridge": "2.1.3",
-    "@forge/jira-bridge": "0.3.0-next.0"
-  },
-  "devDependencies": {
-    "parcel": "2.3.2"
-  },
-  "scripts": {
-    "start": "parcel public/index.html",
-    "build": "PARCEL_WORKERS=0 parcel build public/index.html"
-  },
-  "targets": {
-    "default": {
-      "publicUrl": "./"
+    "name": "ui-modifications-app",
+    "version": "0.1.0",
+    "private": true,
+    "homepage": ".",
+    "dependencies": {
+        "@forge/bridge": "2.1.3",
+        "@forge/jira-bridge": "0.3.0-next.0"
+    },
+    "devDependencies": {
+        "parcel": "2.3.2"
+    },
+    "scripts": {
+        "start": "parcel public/index.html",
+        "build": "PARCEL_WORKERS=0 parcel build public/index.html"
+    },
+    "targets": {
+        "default": {
+            "publicUrl": "./"
+        }
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
     }
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
 }
