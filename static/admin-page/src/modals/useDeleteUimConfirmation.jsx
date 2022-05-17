@@ -11,7 +11,7 @@ import { invokeUiModifications } from '../invokeUiModifications';
 import Button from '@atlaskit/button/standard-button';
 
 const deleteUiModification = function (uiModificationId, setDeleteResult) {
-    return invokeUiModifications('DELETE /rest/api/3/issueAdjustments/{uiModificationId}', {
+    return invokeUiModifications('DELETE /rest/api/3/uiModifications/{uiModificationId}', {
         id: uiModificationId,
     }).then((data) => {
         setDeleteResult(JSON.stringify(data, null, 2));

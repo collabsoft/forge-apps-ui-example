@@ -8,7 +8,7 @@ import Button from '@atlaskit/button/standard-button';
 import ProjectissuetypeSelectors from '../components/ProjectissuetypeSelector';
 
 export const createUimContext = (uiModification, data, setContextResult) => {
-    return invokeUiModifications('PUT /rest/api/3/issueAdjustments/{uiModificationId}', {
+    return invokeUiModifications('PUT /rest/api/3/uiModifications/{uiModificationId}', {
         id: uiModification.id,
         body: {
             contexts: [

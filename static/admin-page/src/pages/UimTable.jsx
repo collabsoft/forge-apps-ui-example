@@ -174,7 +174,7 @@ export function UimTable() {
     );
 
     useEffect(() => {
-        invokeUiModifications('GET /rest/api/3/issueAdjustments', {
+        invokeUiModifications('GET /rest/api/3/uiModifications', {
             expands: {
                 contexts: true,
                 data: true,
@@ -297,7 +297,7 @@ export function UimTable() {
     return (
         <>
             <div>
-                <h3>GET /rest/api/3/issueAdjustments?expand=contexts,data</h3>
+                <h3>GET /rest/api/3/uiModifications?expand=contexts,data</h3>
                 {UimContextCreateModal}
                 {UimContextDeleteConfirmation}
                 {UimDeleteConfirmation}
@@ -311,7 +311,7 @@ export function UimTable() {
                             onDismissed={() => setUimContextResult(null)}
                             title={
                                 <>
-                                    POST /rest/api/3/issueAdjustments/
+                                    POST /rest/api/3/uiModifications/
                                     {currentUiModification?.id}/contexts
                                 </>
                             }
@@ -335,7 +335,7 @@ export function UimTable() {
                             title={
                                 <>
                                     Delete context from UI modification by calling PUT
-                                    /rest/api/3/issueAdjustments/
+                                    /rest/api/3/uiModifications/
                                     {currentUiModification?.id}
                                 </>
                             }
@@ -358,7 +358,7 @@ export function UimTable() {
                             onDismissed={() => setUimDeleteResult(null)}
                             title={
                                 <>
-                                    DELETE /rest/api/3/issueAdjustments/
+                                    DELETE /rest/api/3/uiModifications/
                                     {currentUiModification?.id}
                                 </>
                             }
