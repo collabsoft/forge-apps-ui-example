@@ -1,17 +1,17 @@
 export const UiModificationsEndpoints = {
-    'GET /rest/api/3/issueAdjustments': '/rest/api/3/issueAdjustments',
-    'POST /rest/api/3/issueAdjustments': '/rest/api/3/issueAdjustments',
+    'GET /rest/api/3/uiModifications': '/rest/api/3/uiModifications',
+    'POST /rest/api/3/uiModifications': '/rest/api/3/uiModifications',
 
-    'PUT /rest/api/3/issueAdjustments/{uiModificationId}':
-        '/rest/api/3/issueAdjustments/{uiModificationId}',
-    'DELETE /rest/api/3/issueAdjustments/{uiModificationId}':
-        '/rest/api/3/issueAdjustments/{uiModificationId}',
+    'PUT /rest/api/3/uiModifications/{uiModificationId}':
+        '/rest/api/3/uiModifications/{uiModificationId}',
+    'DELETE /rest/api/3/uiModifications/{uiModificationId}':
+        '/rest/api/3/uiModifications/{uiModificationId}',
 };
 
 export const UiModificationsMethod = {
-    'GET /rest/api/3/issueAdjustments': 'GET',
-    'POST /rest/api/3/issueAdjustments': 'POST',
+    'GET /rest/api/3/uiModifications': 'GET',
+    'POST /rest/api/3/uiModifications': 'POST',
 
-    'PUT /rest/api/3/issueAdjustments/{uiModificationId}': 'PUT',
-    'DELETE /rest/api/3/issueAdjustments/{uiModificationId}': 'DELETE',
+    'PUT /rest/api/3/uiModifications/{uiModificationId}': 'PUT',
+    'DELETE /rest/api/3/uiModifications/{uiModificationId}': 'DELETE',
 };

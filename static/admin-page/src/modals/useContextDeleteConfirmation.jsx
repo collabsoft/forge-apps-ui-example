@@ -11,7 +11,7 @@ import { invokeUiModifications } from '../invokeUiModifications';
 import Button from '@atlaskit/button/standard-button';
 
 const deleteContext = function (uiModification, contextId, setContextDeleteResult) {
-    return invokeUiModifications('PUT /rest/api/3/issueAdjustments/{uiModificationId}', {
+    return invokeUiModifications('PUT /rest/api/3/uiModifications/{uiModificationId}', {
         id: uiModification.id,
         body: {
             contexts: [

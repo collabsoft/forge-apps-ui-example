@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { invokeUiModifications } from '../invokeUiModifications';
 
 function createUiModification(data, setUiModificationResult) {
-    invokeUiModifications('POST /rest/api/3/issueAdjustments', {
+    invokeUiModifications('POST /rest/api/3/uiModifications', {
         body: {
             name: data['ia-name'],
             description: data['ia-description'],
