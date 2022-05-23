@@ -31,6 +31,7 @@ permissions:
     - read:project.component:jira
     - read:group:jira
     - read:project-version:jira
+    - read:jira-work
   content:
     styles:
       - 'unsafe-inline'
