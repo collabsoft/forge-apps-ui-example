@@ -698,10 +698,10 @@
   dependencies:
     "@types/history" "^4.7.8"
 
-"@forge/jira-bridge@0.3.0-next.0":
-  version "0.3.0-next.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/jira-bridge/-/jira-bridge-0.3.0-next.0.tgz#2237ada0295ef75b80201c083808fbbe6a9ee772"
-  integrity sha512-LNyokEeX/RR4wiUxUYjvupsitFLfu5f/aphhojevXlhYrvyYTk7oXkDGdcnt565uqz3z7RlCQJojOuVxXRbvBA==
+"@forge/jira-bridge@0.0.0-experimental-416047f":
+  version "0.0.0-experimental-416047f"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/jira-bridge/-/jira-bridge-0.0.0-experimental-416047f.tgz#5e193fde6a85f119075ae7b73d48399f43b2dc69"
+  integrity sha512-nQwQ5wmsocgISw4epvD9w8QwXZ9Dt9zJCqyAmMTLgUkp4JMiNQ5Vx6f9LOX/3V3zTlNJsRM/2NM+73tj8F2Dzw==
 
 "@forge/resolver@^1.4.2":
   version "1.4.3"
