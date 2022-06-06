@@ -8,9 +8,12 @@ This repository is for the early access preview for the upcoming
 This app serves as an end-to-end example of how to use UI modifications in Jira Cloud. It's a Forge
 app that provides three UI modifications operations:
 
--   Hiding the priority field
--   Changing the summary field label to "Modified summary label"
--   Changing the assignee field description to "Description added by UI modifications"
+- Hiding the priority field
+- Changing the summary field label to "Modified summary label"
+- Changing the assignee field description to "Description added by UI modifications"
+- Listening for `summary` field change and
+  - modifying description of `summary` field with the latest date time
+  - showing the priority field
 
 Also, it provides a basic example of how to retrieve the app context and how to call product API.
 

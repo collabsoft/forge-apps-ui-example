@@ -684,10 +684,10 @@
   dependencies:
     tslib "^1.11.0"
 
-"@forge/bridge@2.1.3":
-  version "2.1.3"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-2.1.3.tgz#951fa9c047f257a638b67822767de76061af064e"
-  integrity sha512-gcoDkEKIVioqKMB2mNsF6d3Z+FJLI2aIwOK+o6S8f2fkaWQE8ArHg3puP2kBxLVXfieIZmLbmNMRLspjoPlpzQ==
+"@forge/bridge@2.3.0":
+  version "2.3.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-2.3.0.tgz#84fb29a46509257b0ddf657e180b8bf15e404815"
+  integrity sha512-Y6TY9CNIuFSfne5U5vNJA3lEzsIQ/PcUoClKJ4YC1xDKPgNPJ8HEcaf17OmmfdehgCaCtjJvzt1oNbqnhXE29w==
   dependencies:
     "@types/history" "^4.7.8"
 
@@ -698,10 +698,10 @@
   dependencies:
     "@types/history" "^4.7.8"
 
-"@forge/jira-bridge@0.0.0-experimental-416047f":
-  version "0.0.0-experimental-416047f"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/jira-bridge/-/jira-bridge-0.0.0-experimental-416047f.tgz#5e193fde6a85f119075ae7b73d48399f43b2dc69"
-  integrity sha512-nQwQ5wmsocgISw4epvD9w8QwXZ9Dt9zJCqyAmMTLgUkp4JMiNQ5Vx6f9LOX/3V3zTlNJsRM/2NM+73tj8F2Dzw==
+"@forge/jira-bridge@0.5.0-next.0":
+  version "0.5.0-next.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/jira-bridge/-/jira-bridge-0.5.0-next.0.tgz#8e2e484d11ee0203e0fa6ac4d51a00fae047ce53"
+  integrity sha512-CULa2aaauxPuUGGtmmzc1/Uedqi7sBJUYZ25tpq9vpGu0k6zzaXiCiDvBUMEClXXYkJKo/7NmbvwS/2l94414A==
 
 "@forge/resolver@^1.4.2":
   version "1.4.3"
