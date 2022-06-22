@@ -5,8 +5,9 @@
 This repository is for the early access preview for the upcoming
 [UI modifications extension point](https://trello.com/c/HohZrqJl/77-issue-adjustments).
 
-This app serves as an end-to-end example of how to use UI modifications in Jira Cloud. It's a Forge
-app that provides three UI modifications operations:
+This app serves as an end-to-end example of how to write and use UI modifications in Jira Cloud. 
+
+This Forge app provides three UI modifications operations:
 
 - Hiding the priority field
 - Changing the summary field label to "Modified summary label"
@@ -15,7 +16,7 @@ app that provides three UI modifications operations:
   - modifying description of `summary` field with the latest date time
   - showing the priority field
 
-Also, it provides a basic example of how to retrieve the app context and how to call product API.
+Also, it provides an example admin page to control the UI modifications and where you can understand how to retrieve the app context and how to call product API.
 
 ## About Forge
 

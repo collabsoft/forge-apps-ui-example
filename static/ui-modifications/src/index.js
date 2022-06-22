@@ -1,5 +1,5 @@
 import { view, requestJira } from '@forge/bridge';
-import { uiModifications } from '@forge/jira-bridge/out/ui-modifications'
+import { uiModificationsApi } from '@forge/jira-bridge';
 import { getFieldsSnapshot } from './getFieldsSnapshot';
 
 const log = console.log;
@@ -17,7 +17,7 @@ view.getContext().then((context) => {
     console.table(extension.uiModifications);
 });
 
-const { onInit, onChange } = uiModifications;
+const { onInit, onChange } = uiModificationsApi;
 
 const onInitCallback = ({ api }) => {
     const { getFieldById } = api;
@@ -51,7 +51,7 @@ const onInitCallback = ({ api }) => {
 };
 
 onInit(onInitCallback, () => {
-    return ["summary", "assignee", "description", "priority"];
+    return ['summary', 'assignee', 'description', 'priority'];
 });
 
 const onChangeCallback = ({ api, change }) => {
@@ -66,9 +66,7 @@ const onChangeCallback = ({ api, change }) => {
         console.log(`The ${id} field value is: ${value}`);
 
         // Updating the `summary` field description
-        change.current.setDescription(
-            `The ${id} field was updated at: ${new Date().toString()}`
-        );
+        change.current.setDescription(`The ${id} field was updated at: ${new Date().toString()}`);
 
         // Showing the priority field (keep in mind the onInitCallback hides it)
         api.getFieldById('priority')?.setVisible(true);
@@ -84,4 +82,4 @@ const onChangeCallback = ({ api, change }) => {
     }
 };
 
-onChange(onChangeCallback, () => ["summary", "priority"]);
+onChange(onChangeCallback, () => ['summary', 'priority']);

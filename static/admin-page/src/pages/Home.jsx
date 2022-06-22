@@ -3,26 +3,37 @@ import React from 'react';
 function Home() {
     return (
         <>
-            <h3>UI modifications - admin page</h3>
+            <h3>UI modifications example admin page</h3>
             <p>
-                Use this page to administer in which contexts the UI modifications in this app will
-                run.
+                This example admin page was created to allow developers to focus on writing their
+                first UI modifications without putting together the data and contexts for the UI
+                modifications, manually.
             </p>
             <p>
-                You <strong>cannot</strong> administer all the UI modifications from all the UI
-                modifications apps from this panel.
+                This is not a generic admin page for all the UI modifications created in this Jira
+                instance. Apps <strong>cannot</strong> administer the UI modifications from other
+                apps.
             </p>
+            <p>This panel contains three pages:</p>
             <h4>New UI modification</h4>
             <p>
-                Create new UI modification. This is how we include different data into the UI
-                modifications
+                Create a new UI modification with associated data. Each UI modification is expected
+                to contain data that can be used at runtime. It is expected that the code written
+                inside the UI modifications module will not be changed frequently, and minor (or
+                major) customizations will be handled by reading the data and the context provided
+                for each UI modification during the execution.
             </p>
             <h4>UI modifications contexts and data</h4>
             <p>
-                A complete list of the contexts for <strong>this app</strong>.
+                The complete list of UI modifications that is owned by <strong>this app</strong> and
+                the contexts they have been added into.
             </p>
             <h4>Projects & issue types</h4>
-            <p>A list of ids and keys for the issue types and projects</p>
+            <p>
+                A list of ids and keys for the issue types and projects that this app has access to
+                in this Jira instance.
+            </p>
+            .
         </>
     );
 }

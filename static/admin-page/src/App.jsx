@@ -20,7 +20,7 @@ function App() {
     const sidebar = (
         <SideNavigation label="project">
             <NavigationHeader>
-                <Header>Unbox UI modification</Header>
+                <Header>UI modifications admin page</Header>
             </NavigationHeader>
             <NavigationContent>
                 <Section>
@@ -49,10 +49,10 @@ function App() {
             children={
                 <div style={{ padding: '35px' }}>
                     <Routes>
-                        <Route path="/" element={<Home />} />
                         <Route path="/projectissuetypes" element={<ProjectIssueTypesTable />} />
                         <Route path="/ui-modifications" element={<UimTable />} />
                         <Route path="/ui-modifications/new" element={<UimCreateForm />} />
+                        <Route path="*" element={<Home />} />
                     </Routes>
                 </div>
             }
