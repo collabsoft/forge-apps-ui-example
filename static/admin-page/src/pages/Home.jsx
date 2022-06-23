@@ -14,7 +14,7 @@ function Home() {
                 instance. Apps <strong>cannot</strong> administer the UI modifications from other
                 apps.
             </p>
-            <p>This panel contains three pages:</p>
+            <p>This admin panel contains three pages:</p>
             <h4>New UI modification</h4>
             <p>
                 Create a new UI modification with associated data. Each UI modification is expected
@@ -33,7 +33,6 @@ function Home() {
                 A list of ids and keys for the issue types and projects that this app has access to
                 in this Jira instance.
             </p>
-            .
         </>
     );
 }
