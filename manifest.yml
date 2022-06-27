@@ -11,17 +11,13 @@ modules:
       sections:
         - heeader: UI modifications admin page
           pages:
-            -
-              title: Home
+            - title: Home
               route: '/'
-            -
-              title: New UI modification
+            - title: New UI modification
               route: '/new-ui-modification'
-            -
-              title: UI modifications contexts and data
+            - title: UI modifications contexts and data
               route: '/ui-modifications'
-            -
-              title: Projects & Issue types
+            - title: Projects & Issue types
               route: '/projectissuetypes'
       resolver:
         function: resolver
@@ -43,4 +39,3 @@ permissions:
     styles:
       - 'unsafe-inline'
 app:
-  id: ari:cloud:ecosystem::app/574faba8-d82f-4fb5-99ae-6699c32fc31b

@@ -43,27 +43,27 @@ documentation and tutorials explaining Forge, including the
 yarn install
 ```
 
--   Build your UI modifications resource in `static/ui-modifications` by `yarn build:uim`
+- Build both the UI modifications `static/ui-modifications` and admin panel `static/admin-page` modules:
+
+```
+yarn build
+```
+
+- Or watch changes when you're making modifications:
+
+```
+yarn watch
+```
+
+- You can also define specific modules if you're not changing both at the same time
 
 ```
 yarn build:uim
-```
-
-or with watching changes
-
-```
-yarn watch:uim
-```
-
--   Build your Admin Page resource in `static/admin-page` by `yarn build:admin`
-
-```
 yarn build:admin
 ```
 
-or with watching changes
-
 ```
+yarn watch:uim
 yarn watch:admin
 ```
 
@@ -76,33 +76,13 @@ forge register
 -   Build and deploy your app by running:
 
 ```
-forge deploy --no-verify
+forge deploy
 ```
 
 -   Install your app in an Atlassian site by running:
 
 ```
 forge install
-```
-
--   Modify your UI modifications resource by editing files in `static/ui-modifications`. After
-    modifying file, remember to build your app by `yarn build:uim`.
-
-```
-yarn build:uim
-```
-
--   Modify your Admin Page resource by editing files in `static/admin-page`. After modifying file,
-    remember to build your app by `yarn build:admin`.
-
-```
-yarn build:admin
-```
-
-or build both by
-
-```
-yarn build
 ```
 
 -   Develop your app by running `forge tunnel` to proxy invocations locally:
@@ -113,7 +93,7 @@ forge tunnel
 
 ### Notes
 
--   Use the `forge deploy --no-verify` command when you want to persist code changes.
+-   Use the `forge deploy` command when you want to persist code changes.
 -   Use the `forge install` command when you want to install the app on a new site.
 -   Once the app is installed on a site, the site picks up the new app changes you deploy without
     needing to rerun the install command.

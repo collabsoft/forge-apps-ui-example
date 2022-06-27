@@ -12,7 +12,6 @@ function App() {
 
     useEffect(() => {
         view.createHistory().then((newHistory) => {
-            console.log('create history', newHistory);
             setHistory(newHistory);
         });
     }, []);
@@ -31,7 +30,6 @@ function App() {
     useEffect(() => {
         if (history) {
             history.listen((location, action) => {
-                console.log('history chage', location, action);
                 setHistoryState({
                     action,
                     location,

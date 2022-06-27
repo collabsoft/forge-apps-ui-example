@@ -12,14 +12,11 @@ view.getContext().then((context) => {
     const { extension } = context;
     console.log('Context:');
     console.table({ project: extension.project, issueType: extension.issueType });
-
-    console.log('UI modifications data:');
-    console.table(extension.uiModifications);
 });
 
 const { onInit, onChange } = uiModificationsApi;
 
-const onInitCallback = ({ api }) => {
+const onInitCallback = ({ api, uiModifications }) => {
     const { getFieldById } = api;
 
     // Hiding the priority field
@@ -41,6 +38,12 @@ const onInitCallback = ({ api }) => {
     console.log('Fields Snapshot:');
     console.table(getFieldsSnapshot(getFieldById));
 
+    // Here we read the data that can be set when creating the UI modifications context
+    // This is preferred method of making small customizations to adapt your UI modifications to different projects and issue types
+    uiModifications.forEach((uiModification) => {
+        console.log(`Data for UI modification ID ${uiModification.id}`, uiModification.data);
+    });
+
     // Return a Promise to apply changes after resolve.
     return new Promise(async (resolve) => {
         // Example Product API call
@@ -54,10 +57,15 @@ onInit(onInitCallback, () => {
     return ['summary', 'assignee', 'description', 'priority'];
 });
 
-const onChangeCallback = ({ api, change }) => {
+const onChangeCallback = ({ api, change, uiModifications }) => {
     // The `change.current` property provides access
     // to the field which triggered the change
     const id = change.current.getId();
+
+    // The UI modifications data is also present in the onChange callback
+    uiModifications.forEach((uiModification) => {
+        console.log(`Data for UI modification ID ${uiModification.id}`, uiModification.data);
+    });
 
     // Checking if the change event was triggered by the `summary` field
     if (id === 'summary') {
