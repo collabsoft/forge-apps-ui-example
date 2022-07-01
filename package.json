@@ -20,7 +20,7 @@
         "build:uim": "yarn workspace ui-modifications-app build",
         "watch": "(yarn watch:admin & yarn watch:uim)",
         "build": "yarn workspaces run build",
-        "build-deploy": "yarn build && forge deploy --no-verify"
+        "build-deploy": "yarn build && forge deploy"
     },
     "workspaces": [
         "static/admin-page",
