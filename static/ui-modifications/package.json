@@ -4,8 +4,8 @@
     "private": true,
     "homepage": ".",
     "dependencies": {
-        "@forge/bridge": "2.3.0",
-        "@forge/jira-bridge": "0.5.0-next.0"
+        "@forge/bridge": "2.4.0",
+        "@forge/jira-bridge": "0.6.0"
     },
     "devDependencies": {
         "parcel": "2.3.2"

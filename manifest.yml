@@ -8,6 +8,17 @@ modules:
       title: Example UI modifications admin page
       layout: basic
       resource: adminPage
+      sections:
+        - heeader: UI modifications admin page
+          pages:
+            - title: Home
+              route: '/'
+            - title: New UI modification
+              route: '/new-ui-modification'
+            - title: UI modifications contexts and data
+              route: '/ui-modifications'
+            - title: Projects & Issue types
+              route: '/projectissuetypes'
       resolver:
         function: resolver
   function:
@@ -20,18 +31,10 @@ resources:
     path: static/admin-page/dist
 permissions:
   scopes:
-    - read:issue-type-hierarchy:jira
-    - read:user:jira
-    - read:application-role:jira
-    - read:avatar:jira
-    - read:issue-type:jira
-    - read:project:jira
-    - read:project.property:jira
-    - read:project-category:jira
-    - read:project.component:jira
-    - read:group:jira
-    - read:project-version:jira
+    - manage:jira-configuration
+    - read:jira-user
     - read:jira-work
+    - write:jira-work
   content:
     styles:
       - 'unsafe-inline'

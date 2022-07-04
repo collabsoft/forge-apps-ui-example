@@ -265,20 +265,6 @@
     react-uid "^2.2.0"
     shallow-equal "^1.0.0"
 
-"@atlaskit/side-navigation@^1.2.4":
-  version "1.2.9"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/side-navigation/-/side-navigation-1.2.9.tgz#a881c788e09acdef91e447dae23f5ec026cb2970"
-  integrity sha512-m8G6V6//tUFvcaz8xfOjuNyRRl014JACCcCcgIU8QVshJ3vTkm8GMVxGMuUQqcam4NTC1Z1/6oyRWplnX7obQw==
-  dependencies:
-    "@atlaskit/ds-lib" "^1.4.0"
-    "@atlaskit/icon" "^21.10.0"
-    "@atlaskit/menu" "^1.3.0"
-    "@atlaskit/motion" "^1.0.0"
-    "@atlaskit/theme" "^12.1.0"
-    "@atlaskit/tokens" "^0.9.0"
-    "@babel/runtime" "^7.0.0"
-    "@emotion/core" "^10.0.9"
-
 "@atlaskit/spinner@^15.0.0", "@atlaskit/spinner@^15.1.0":
   version "15.1.10"
   resolved "https://packages.atlassian.com/api/npm/npm-remote/@atlaskit/spinner/-/spinner-15.1.10.tgz#cac5cc7603bb3bf6f121c06918a00d97f9e2e373"
@@ -667,13 +653,13 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@forge/api@2.6.1", "@forge/api@^2.6.0":
-  version "2.6.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-2.6.1.tgz#8bed707ac395795feacc17e46310e78a491f4005"
-  integrity sha512-HFw4BUr66VhKO7W6P1Vnh638kvO7RxJB92tDRYPD8DsJ8NC4GzgPxrgBNZDOFhvlIqfddTnE0nSnNmj+XvO9ug==
+"@forge/api@2.7.0", "@forge/api@^2.7.0":
+  version "2.7.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/api/-/api-2.7.0.tgz#2022a7fe859fac0cba451c5f7cb4ab287107c368"
+  integrity sha512-5divMMwC4PVCUy3r84/CUUUTMWFNyeibtg7gpZGS1xK4OuOILRf+DjIRGWWFwxHHJNP+12YsPqSpdSgldEgU0w==
   dependencies:
     "@forge/auth" "^0.0.1"
-    "@forge/storage" "^1.2.0"
+    "@forge/storage" "^1.3.0"
     "@types/node-fetch" "^2.5.7"
     node-fetch "2.6.1"
 
@@ -684,36 +670,29 @@
   dependencies:
     tslib "^1.11.0"
 
-"@forge/bridge@2.3.0":
-  version "2.3.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-2.3.0.tgz#84fb29a46509257b0ddf657e180b8bf15e404815"
-  integrity sha512-Y6TY9CNIuFSfne5U5vNJA3lEzsIQ/PcUoClKJ4YC1xDKPgNPJ8HEcaf17OmmfdehgCaCtjJvzt1oNbqnhXE29w==
+"@forge/bridge@2.4.0", "@forge/bridge@^2.4.0":
+  version "2.4.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-2.4.0.tgz#6542a1bd5ad400002254a5cf755850fbcec55cee"
+  integrity sha512-ySILbSdJsCPLwQyL+ctZADo8EVjQXya0gjKMUmXSTlts9SgL5W4QgmT8ac1ZWxUDpvhGsaC7txQIsOWRzqAlSA==
   dependencies:
     "@types/history" "^4.7.8"
 
-"@forge/bridge@^2.1.3":
-  version "2.2.1"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/bridge/-/bridge-2.2.1.tgz#6293990699ab4ab2feea0a7239e715b7924f9ffe"
-  integrity sha512-RHuJ5WCzp5h7oJp/3MQdrh02UHDYV9RwHEx4XvAej2GdWa4FeWYsW7KsC/ht5Z6FdQNGOEBsz9t0Ei4QcdN48Q==
+"@forge/jira-bridge@0.6.0":
+  version "0.6.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/jira-bridge/-/jira-bridge-0.6.0.tgz#c8000d154135bb46c99dd8c25cef770e2991f31f"
+  integrity sha512-HyNglC7lY/hxNhPtdBZTqZKYve3BrNE3izTi7pVcX+pjyKZUeke+GZEi0rVQn7DU6BKt4ltkoH5P/iZ31ks/+g==
+
+"@forge/resolver@^1.4.4":
+  version "1.4.4"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/resolver/-/resolver-1.4.4.tgz#0a731e08c6125fe1c3a6be4642ff551cf5d63042"
+  integrity sha512-tpBYTztqv8ZPB3KoM+b3RnbwKYHr6KIVl2sxef2bjLY3ygjNHDDTtSXpF4wQXkNMnyaJsL7QFycTcMRZn36ieQ==
   dependencies:
-    "@types/history" "^4.7.8"
+    "@forge/api" "2.7.0"
 
-"@forge/jira-bridge@0.5.0-next.0":
-  version "0.5.0-next.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/jira-bridge/-/jira-bridge-0.5.0-next.0.tgz#8e2e484d11ee0203e0fa6ac4d51a00fae047ce53"
-  integrity sha512-CULa2aaauxPuUGGtmmzc1/Uedqi7sBJUYZ25tpq9vpGu0k6zzaXiCiDvBUMEClXXYkJKo/7NmbvwS/2l94414A==
-
-"@forge/resolver@^1.4.2":
-  version "1.4.3"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/resolver/-/resolver-1.4.3.tgz#e28c453fc09a5b51f54c633501ea81adc3bb03f0"
-  integrity sha512-UxFAxWHVUwuOEmVaaF1g7DakDidYjhQ/Tl2P7LHnLyTWY3/xNXWzilYpSQP8pNkOYLZV28fGcMfa2laIDRAcdw==
-  dependencies:
-    "@forge/api" "2.6.1"
-
-"@forge/storage@^1.2.0":
-  version "1.2.0"
-  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/storage/-/storage-1.2.0.tgz#6d048644f8d7a50e4411a1ee853f160da1dc5a2d"
-  integrity sha512-/pRNxvKcjv/nEShk6p3tSefmYDBjmInc9kUtvjsr183t8dF72gbSl70YVD73+DwCJYUkFsvsQ4zR7h93/K0oLw==
+"@forge/storage@^1.3.0":
+  version "1.3.0"
+  resolved "https://packages.atlassian.com/api/npm/npm-remote/@forge/storage/-/storage-1.3.0.tgz#3e572c0aa780581acc1c8f51206fca639c245242"
+  integrity sha512-Tje/X+KY8i/u624YoxiOY+zP5sQc6rqo+vXA//nmIFGx0yWlPhUNf6ft7fFJrFe2JGpqgtNgfo3AjspveyMkzg==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
