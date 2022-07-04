@@ -7,7 +7,7 @@ This repository is for the early access preview for the upcoming
 
 This app serves as an end-to-end example of how to write and use UI modifications in Jira Cloud. 
 
-This Forge app provides three UI modifications operations:
+This Forge app provides the following UI modifications operations:
 
 - Hiding the priority field
 - Changing the summary field label to "Modified summary label"
