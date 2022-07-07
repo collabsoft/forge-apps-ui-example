@@ -1,0 +1,13 @@
+image: node:16
+
+pipelines:
+  default:
+    - step:
+        name: Install and build validation
+        caches:
+          - node
+        script:
+          - yarn install --frozen-lockfile --non-interactive
+          - yarn build
+          - yarn build:uim
+          - yarn build:admin
