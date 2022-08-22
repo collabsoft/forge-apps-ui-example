@@ -53,7 +53,6 @@ const ProjectissuetypeSelectors = ({ setSubmitDisabled }) => {
                     }
                     resolve(
                         data.data.values
-                            .filter((project) => !project.simplified)
                             .map((project) => ({
                                 iconUrl: project.avatarUrls['16x16'],
                                 label: `(${project.id}) ${project.key} - ${project.name}`,
