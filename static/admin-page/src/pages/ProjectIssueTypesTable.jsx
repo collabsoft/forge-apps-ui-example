@@ -29,7 +29,7 @@ export function ProjectIssueTypesTable() {
                         <th>Key</th>
                         <th>Name</th>
                         <th>Project type</th>
-                        <th>Simplified</th>
+                        <th></th>
                     </thead>
                     {projectData.data.values.map((project) => (
                         <tr key={project.id}>
@@ -38,7 +38,7 @@ export function ProjectIssueTypesTable() {
                             <td key={project.name}>{project.name}</td>
                             <td key={project.projectTypeKey}>{project.projectTypeKey}</td>
                             <td key={project.simplified}>
-                                {project.simplified ? 'True' : 'False'}
+                                {project.simplified ? 'Team-managed' : 'Company-managed'}
                             </td>
                         </tr>
                     ))}

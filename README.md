@@ -106,12 +106,8 @@ This example app will affect issue create dialog for configured project and issu
 
 ### Project type support
 
-Currently, UI modifications only supports company-managed software projects. Other project types,
-like Jira Service Management or team-managed projects, will not work with UI modifications at this
-stage.
-
-You can read more about the difference
-[here](https://support.atlassian.com/jira-software-cloud/docs/what-are-team-managed-and-company-managed-projects/).
+Currently, UI modifications only supports company-managed and team-managed Jira Software projects. Other project types
+like Jira Service Management will not work with UI modifications at this stage.
 
 ## License
 
