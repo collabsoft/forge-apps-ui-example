@@ -1,13 +1,10 @@
 [![Atlassian license](https://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat-square)](LICENSE)
 
-## UI modifications forge example
+## UI modifications Forge example
 
-This repository is for the early access preview for the upcoming
-[UI modifications extension point](https://trello.com/c/HohZrqJl/77-issue-adjustments).
+This repository is a reference for UI modifications module in a Forge app. You can read more about it on [the documentation](https://developer.atlassian.com/platform/forge/manifest-reference/modules/jira-ui-modifications/).
 
-This app serves as an end-to-end example of how to write and use UI modifications in Jira Cloud. 
-
-This Forge app provides the following UI modifications operations:
+This app serves as an end-to-end example and provides the following UI modifications operations:
 
 - Hiding the priority field
 - Changing the summary field label to "Modified summary label"
@@ -16,24 +13,18 @@ This Forge app provides the following UI modifications operations:
   - modifying description of `summary` field with the latest date time
   - showing the priority field
 
-Also, it provides an example admin page to control the UI modifications and where you can understand how to retrieve the app context and how to call product API.
+Also, it provides an example admin page to control the UI modifications and where you can understand how to retrieve the app context and how to call product API. 
+The admin page can be found inside the Apps management screen in Jira, on the sidebar.
 
 ## About Forge
 
 See [Atlassian Developer Forge space](https://developer.atlassian.com/platform/forge) for
-documentation and tutorials explaining Forge, including the
-[documentation of Forge custom fields](https://developer.atlassian.com/platform/forge/manifest-reference/#jira-custom-field).
+documentation and tutorials explaining Forge.
 
 ## Requirements
 
 -   See [Set up Forge](https://developer.atlassian.com/platform/forge/set-up-forge/) for
     instructions to get set up.
-
--   Jira instance prerequisites:
-    -   The
-        [issue create view experience](https://support.atlassian.com/jira-work-management/docs/what-is-the-new-jira-issue-create-experience/)
-        enabled.
-    -   UI modifications integration code enabled. This feature can only be enabled by Atlassian.
 
 ## Quick start
 
